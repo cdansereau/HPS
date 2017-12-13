@@ -47,8 +47,8 @@ def get_hm_score_(lr,x,hm_y):
     w_coef = lr.coef_[0]
 
     df_data = lr.decision_function(x)
-    print hm_y.shape
-    print df_data.shape
+    print(hm_y.shape)
+    print(df_data.shape)
     return np.array([hm_y[df_data<0], hm_y[df_data>0]])
 
 def idx_decision(lr,data):
@@ -93,9 +93,9 @@ def show_hm_(lr,xtrain,hm_y,show_fig=True):
         plt.plot(df_data[hm_y<=0],y_tmp+np.random.normal(0, 0.1, size=len(y_tmp)),'bo')
 
         # acc of the left side
-        print (np.mean(hm_y[df_data<0]))
+        print(np.mean(hm_y[df_data<0]))
         # acc of the right side
-        print (np.mean(hm_y[df_data>0]))
+        print(np.mean(hm_y[df_data>0]))
         print('Size',len(hm_y[df_data<0]),len(hm_y[df_data>0]))
 
         plt.plot(np.arange(-3.,3,0.1),lr_curve)
@@ -128,9 +128,9 @@ def show_explicit_hm_(df_data,hm_y,labels=['Hit','Miss','logistic regression cur
 
 
     # acc of the left side
-    print (np.mean(hm_y[df_data<0]))
+    print(np.mean(hm_y[df_data<0]))
     # acc of the right side
-    print (np.mean(hm_y[df_data>0]))
+    print(np.mean(hm_y[df_data>0]))
     print('Size',len(hm_y[df_data<0]),len(hm_y[df_data>0]))
 
     plt.plot(np.arange(-3.,3,0.1),lr_curve)
@@ -188,39 +188,39 @@ def results_row(y_ref,y_pred,lr_decision,pos_label=1,average='weighted'):
 
 def classif_repo(y_ref,y_pred,lr_decision):
 
-    print '##################################################################'
-    print 'Main'
-    print classification_report(y_ref, y_pred)
-    print 'ACC: '+str(accuracy_score(y_ref,y_pred))
-    print 'Right:'
-    print classification_report(y_ref[lr_decision>0], y_pred[lr_decision>0])
-    print 'ACC: '+str(accuracy_score(y_ref[lr_decision>0],y_pred[lr_decision>0]))
-    print 'Left:'
-    print classification_report(y_ref[lr_decision<0], y_pred[lr_decision<0])
-    print 'ACC: '+str(accuracy_score(y_ref[lr_decision<0],y_pred[lr_decision<0]))
-    print '##################################################################'
+    print('##################################################################')
+    print('Main')
+    print(classification_report(y_ref, y_pred))
+    print('ACC: '+str(accuracy_score(y_ref,y_pred)))
+    print('Right:')
+    print(classification_report(y_ref[lr_decision>0], y_pred[lr_decision>0]))
+    print('ACC: '+str(accuracy_score(y_ref[lr_decision>0],y_pred[lr_decision>0])))
+    print('Left:')
+    print(classification_report(y_ref[lr_decision<0], y_pred[lr_decision<0]))
+    print('ACC: '+str(accuracy_score(y_ref[lr_decision<0],y_pred[lr_decision<0])))
+    print('##################################################################')
     
 def classif_repo_bimode(y_ref,y_pred,lr_decision_sz,lr_decision_ctrl):
 
-    print '##################################################################'
-    print 'Main'
-    print classification_report(y_ref, y_pred)
-    print 'ACC: '+str(accuracy_score(y_ref,y_pred))
-    print '#####################'
-    print 'Right SZ:'
-    print classification_report(y_ref[y_pred==1][lr_decision_sz[y_pred==1]>0], y_pred[y_pred==1][lr_decision_sz[y_pred==1]>0])
-    print 'ACC: '+str(accuracy_score(y_ref[y_pred==1][lr_decision_sz[y_pred==1]>0],y_pred[y_pred==1][lr_decision_sz[y_pred==1]>0]))
-    print 'Left SZ:'
-    print classification_report(y_ref[y_pred==1][lr_decision_sz[y_pred==1]<=0], y_pred[y_pred==1][lr_decision_sz[y_pred==1]<=0])
-    print 'ACC: '+str(accuracy_score(y_ref[y_pred==1][lr_decision_sz[y_pred==1]<=0],y_pred[y_pred==1][lr_decision_sz[y_pred==1]<=0]))
-    print '#####################'
-    print 'Right CTRL:'
-    print classification_report(y_ref[y_pred==0][lr_decision_ctrl[y_pred==0]>0], y_pred[y_pred==0][lr_decision_ctrl[y_pred==0]>0])
-    print 'ACC: '+str(accuracy_score(y_ref[y_pred==0][lr_decision_ctrl[y_pred==0]>0],y_pred[y_pred==0][lr_decision_ctrl[y_pred==0]>0]))
-    print 'Left CTRL:'
-    print classification_report(y_ref[y_pred==0][lr_decision_ctrl[y_pred==0]<=0], y_pred[y_pred==0][lr_decision_ctrl[y_pred==0]<=0])
-    print 'ACC: '+str(accuracy_score(y_ref[y_pred==0][lr_decision_ctrl[y_pred==0]<=0],y_pred[y_pred==0][lr_decision_ctrl[y_pred==0]<=0]))
-    print '##################################################################'
+    print('##################################################################')
+    print('Main')
+    print(classification_report(y_ref, y_pred))
+    print('ACC: '+str(accuracy_score(y_ref,y_pred)))
+    print('#####################')
+    print('Right SZ:')
+    print(classification_report(y_ref[y_pred==1][lr_decision_sz[y_pred==1]>0], y_pred[y_pred==1][lr_decision_sz[y_pred==1]>0]))
+    print('ACC: '+str(accuracy_score(y_ref[y_pred==1][lr_decision_sz[y_pred==1]>0],y_pred[y_pred==1][lr_decision_sz[y_pred==1]>0])))
+    print('Left SZ:')
+    print(classification_report(y_ref[y_pred==1][lr_decision_sz[y_pred==1]<=0], y_pred[y_pred==1][lr_decision_sz[y_pred==1]<=0]))
+    print('ACC: '+str(accuracy_score(y_ref[y_pred==1][lr_decision_sz[y_pred==1]<=0],y_pred[y_pred==1][lr_decision_sz[y_pred==1]<=0])))
+    print('#####################')
+    print('Right CTRL:')
+    print(classification_report(y_ref[y_pred==0][lr_decision_ctrl[y_pred==0]>0], y_pred[y_pred==0][lr_decision_ctrl[y_pred==0]>0]))
+    print('ACC: '+str(accuracy_score(y_ref[y_pred==0][lr_decision_ctrl[y_pred==0]>0],y_pred[y_pred==0][lr_decision_ctrl[y_pred==0]>0])))
+    print('Left CTRL:')
+    print(classification_report(y_ref[y_pred==0][lr_decision_ctrl[y_pred==0]<=0], y_pred[y_pred==0][lr_decision_ctrl[y_pred==0]<=0]))
+    print('ACC: '+str(accuracy_score(y_ref[y_pred==0][lr_decision_ctrl[y_pred==0]<=0],y_pred[y_pred==0][lr_decision_ctrl[y_pred==0]<=0])))
+    print('##################################################################')
 
 
 def scores(y_ref, y_pred):
