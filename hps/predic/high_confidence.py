@@ -272,6 +272,11 @@ class TwoStagesPrediction(object):
 
     def __init__(self, verbose=True, basemodel=[], confidencemodel=[], gamma=1., n_iter=100, min_gamma=0.8,
                  thresh_ratio=0.1, shuffle_test_split=0.2, gamma_auto_adjust=True, recurrent_modes=3, hitprobability_strategy='shuffle'):
+        """
+        Two Stage prediction framework
+        :param verbose:
+        :return
+        """
         self.verbose = verbose
         self.gamma = gamma
         self.n_iter = n_iter
