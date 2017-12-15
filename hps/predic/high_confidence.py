@@ -17,6 +17,9 @@ from scipy.cluster.hierarchy import linkage
 from scipy.cluster.hierarchy import fcluster
 from sklearn.preprocessing import OneHotEncoder
 
+import warnings
+warnings.filterwarnings('ignore')
+
 
 class nullClassifier(object):
     def fit(self, x, y):
@@ -275,6 +278,9 @@ class TwoStagesPrediction(object):
         """
         Two Stage prediction framework
         :param verbose:
+        :param n_iter: number of subsampling iterations
+        :param min_gamma: lower bound on the gamma threshold (hit probability threshold)
+        :param thresh_ratio: minimum percentage required to more to stage 2
         :return
         """
         self.verbose = verbose
